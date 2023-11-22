@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="stylesheet-e.css">
+  <title>Miller's Wood Flooring</title>
+  <style>
+    
+  </style>
+</head>
+<body>
+  <div id="page-container">
+    <div id="content-wrap">
+      <div class="header-container">
+      <header class="header">
+        <h1>
+          <img src="logo.png" alt="logo" style="margin-bottom: -0.65em;" width="125" height="100"/> Miller's Wood Flooring</h1>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a class="active" href="estimate.html">Estimate</a></li>
+        </ul>
+      </header>
+      </div>
+      
+      <h1>Get a quick estimate based on the footage of your floor!</h1>
+      <div id="calculators-container">
+        <!-- Calculator for New Flooring Estimate -->
+        <div class="calculator" id="calculator">
+          <h2>New Flooring Estimate Calculator</h2>
+          <label for="squareFootage">Square Footage of Floor:</label>
+          <input type="number" id="squareFootage" placeholder="Enter square footage" required>
+          <button onclick="calculateEstimate()">Calculate Estimate</button>
+          <p id="result"></p>
+        </div>
+
+        <!-- Calculator for Resurfacing Floors Estimate -->
+        <div class="calculator" id="resurfacing-calculator">
+          <h2>Resurfacing Floors Estimate Calculator</h2>
+          <label for="resurfacingSquareFootage">Square Footage for Resurfacing:</label>
+          <input type="number" id="resurfacingSquareFootage" placeholder="Enter square footage" required>
+          <button onclick="calculateResurfacingEstimate()">Calculate Estimate</button>
+          <p id="resurfacingResult"></p>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>Miller's Wood Flooring</p>
+      <p>Email: millerswoodflooring@gmail.com</p>
+    </footer>
+</div>
+    <script>
+        // Fixed variables for New Flooring Estimate
+        var newFlooringLowVariable = 10;
+        var newFlooringHighVariable = 20;
+    
+        // Fixed variables for Resurfacing Floors Estimate
+        var resurfacingLowVariable = 15; // Replace with desired fixed low variable
+        var resurfacingHighVariable = 25; // Replace with desired fixed high variable
+    
+        function calculateEstimate() {
+          var squareFootage = parseFloat(document.getElementById("squareFootage").value);
+    
+          if (isNaN(squareFootage)) {
+            alert("Please enter a valid number for square footage.");
+            return;
+          }
+    
+          var lowEstimate = squareFootage * newFlooringLowVariable;
+          var highEstimate = squareFootage * newFlooringHighVariable;
+    
+          document.getElementById("result").innerHTML = "Estimated Cost Range: $" + lowEstimate.toFixed(2) + " - $" + highEstimate.toFixed(2);
+        }
+    
+        function calculateResurfacingEstimate() {
+          var resurfacingSquareFootage = parseFloat(document.getElementById("resurfacingSquareFootage").value);
+    
+          if (isNaN(resurfacingSquareFootage)) {
+            alert("Please enter a valid number for resurfacing square footage.");
+            return;
+          }
+    
+          var lowResurfacingEstimate = resurfacingSquareFootage * resurfacingLowVariable;
+          var highResurfacingEstimate = resurfacingSquareFootage * resurfacingHighVariable;
+    
+          document.getElementById("resurfacingResult").innerHTML = "Estimated Cost Range: $" + lowResurfacingEstimate.toFixed(2) + " - $" + highResurfacingEstimate.toFixed(2);
+        }
+      </script>
+  </body>
+  </html>
